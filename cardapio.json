@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "nome": "Bruschetta al Pomodoro",
+    "nome_pt": "Bruschetta ao Tomate",
+    "descricao": "Pão rústico tostado, esfregado com alho e coberto de tomates frescos temperados com manjericão, flor de sal e azeite extravirgem da Toscana. Simples, honesto e impossível de parar.",
+    "preco": 38,
+    "categoria": "antipasti",
+    "vegetariano": true,
+    "foto_url": "https://placehold.co/400x300/B85042/F8F1E5?text=Bruschetta"
+  },
+  {
+    "id": 2,
+    "nome": "Carpaccio di Manzo",
+    "nome_pt": "Carpaccio de Filé",
+    "descricao": "Lâminas finíssimas de filé mignon cru, temperadas com limão siciliano, rúcula selvagem, lascas de parmesão e um fio generoso de azeite. Clássico do Cipriani que o nonno Giuseppe adotou como próprio.",
+    "preco": 62,
+    "categoria": "antipasti",
+    "vegetariano": false,
+    "foto_url": "https://placehold.co/400x300/B85042/F8F1E5?text=Carpaccio"
+  },
+  {
+    "id": 3,
+    "nome": "Burrata con Prosciutto di Parma",
+    "nome_pt": "Burrata com Presunto de Parma",
+    "descricao": "Burrata fresca importada, cremosa ao cortar, acompanhada de fatias de presunto cru de Parma 24 meses, mel de acácia e pão focaccia feito na casa. Uma entrada que rouba o papel de prato principal.",
+    "preco": 68,
+    "categoria": "antipasti",
+    "vegetariano": false,
+    "foto_url": "https://placehold.co/400x300/B85042/F8F1E5?text=Burrata"
+  },
+  {
+    "id": 4,
+    "nome": "Pappardelle al Cinghiale",
+    "nome_pt": "Pappardelle ao Javali",
+    "descricao": "Massa fresca larga feita à mão, servida com ragù de javali cozido lentamente por seis horas em vinho Chianti, tomilho e louro. A receita que o Giuseppe mais orgulhava de ter trazido de Greve in Chianti.",
+    "preco": 84,
+    "categoria": "pasta",
+    "vegetariano": false,
+    "foto_url": "https://placehold.co/400x300/4a2c1a/F8F1E5?text=Pappardelle"
+  },
+  {
+    "id": 5,
+    "nome": "Spaghetti Cacio e Pepe",
+    "nome_pt": "Espaguete Queijo e Pimenta",
+    "descricao": "Apenas três ingredientes — spaghetti artesanal, pecorino romano ralado na hora e pimenta-do-reino em grão quebrado na frigideira. A prova de que a cozinha italiana não precisa de complexidade para ser perfeita.",
+    "preco": 62,
+    "categoria": "pasta",
+    "vegetariano": true,
+    "foto_url": "https://placehold.co/400x300/4a2c1a/F8F1E5?text=Cacio+e+Pepe"
+  },
+  {
+    "id": 6,
+    "nome": "Tagliatelle al Ragù Bolognese",
+    "nome_pt": "Tagliatelle à Bolonhesa",
+    "descricao": "A bolonhesa que o nonno passava horas preparando às terças: carne bovina e suína picadas na ponta da faca, cenoura, salsão, tomate pelado San Marzano e um toque de leite integral que ele insistia ser o segredo.",
+    "preco": 74,
+    "categoria": "pasta",
+    "vegetariano": false,
+    "foto_url": "https://placehold.co/400x300/4a2c1a/F8F1E5?text=Bolognese"
+  },
+  {
+    "id": 7,
+    "nome": "Gnocchi al Gorgonzola",
+    "nome_pt": "Nhoque ao Gorgonzola",
+    "descricao": "Nhoque de batata artesanal, macio ao ponto de desfazer na boca, banhado em molho aveludado de gorgonzola DOP com nozes tostadas e um velo de parmesão. Pedido obrigatório dos clientes de sempre.",
+    "preco": 68,
+    "categoria": "pasta",
+    "vegetariano": true,
+    "foto_url": "https://placehold.co/400x300/4a2c1a/F8F1E5?text=Gnocchi"
+  },
+  {
+    "id": 8,
+    "nome": "Ossobuco alla Milanese",
+    "nome_pt": "Ossobuco à Milanesa",
+    "descricao": "Joelho de vitelo braseado lentamente até o tutano amolecer, servido com risotto alla milanese perfumado com açafrão e finalizado com gremolata de casca de limão, alho e salsa picada. Um prato de domingo.",
+    "preco": 95,
+    "categoria": "secondi",
+    "vegetariano": false,
+    "foto_url": "https://placehold.co/400x300/6b3a22/F8F1E5?text=Ossobuco"
+  },
+  {
+    "id": 9,
+    "nome": "Pollo alla Cacciatora",
+    "nome_pt": "Frango à Caçadora",
+    "descricao": "Coxa e sobrecoxa de frango caipira cozidas em molho rústico de tomate, azeitonas pretas, alcaparras, vinho branco e ervas frescas — a receita do interior toscano que aquece qualquer noite de inverno em São Paulo.",
+    "preco": 78,
+    "categoria": "secondi",
+    "vegetariano": false,
+    "foto_url": "https://placehold.co/400x300/6b3a22/F8F1E5?text=Cacciatora"
+  },
+  {
+    "id": 10,
+    "nome": "Branzino al Forno con Erbe",
+    "nome_pt": "Robalo ao Forno com Ervas",
+    "descricao": "Robalo fresco inteiro assado sobre leito de alecrim, salsa, tomilho e limão em forno a lenha. Pele dourada e crocante, carne úmida e perfumada. Servido com batatas ao azeite e lemon butter.",
+    "preco": 88,
+    "categoria": "secondi",
+    "vegetariano": false,
+    "foto_url": "https://placehold.co/400x300/6b3a22/F8F1E5?text=Branzino"
+  },
+  {
+    "id": 11,
+    "nome": "Tiramisù della Nonna",
+    "nome_pt": "Tiramisù da Vovó",
+    "descricao": "A receita original da nonna Elisa: biscoito savoiardo embebido em espresso forte e marsala, camadas generosas de creme de mascarpone e uma nevoa de cacau amargo. Não tem outra versão que se compare.",
+    "preco": 38,
+    "categoria": "dolci",
+    "vegetariano": true,
+    "foto_url": "https://placehold.co/400x300/8C9A4A/F8F1E5?text=Tiramisu"
+  },
+  {
+    "id": 12,
+    "nome": "Panna Cotta ai Frutti di Bosco",
+    "nome_pt": "Panna Cotta com Frutas Silvestres",
+    "descricao": "Creme de baunilha gelado de textura sedosa, levemente firme ao corte, coberto com coulis aquecido de frutas vermelhas silvestres. O final de refeição que limpa o paladar e deixa vontade de começar tudo de novo.",
+    "preco": 35,
+    "categoria": "dolci",
+    "vegetariano": true,
+    "foto_url": "https://placehold.co/400x300/8C9A4A/F8F1E5?text=Panna+Cotta"
+  }
+]

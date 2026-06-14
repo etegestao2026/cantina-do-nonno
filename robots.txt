@@ -1,0 +1,62 @@
+# robots.txt — Cantina del Nonno
+# https://cantinadonnonno.com.br
+
+# Crawlers tradicionais de busca
+User-agent: *
+Allow: /
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing / Microsoft
+User-agent: Bingbot
+Allow: /
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl (base de treino de LLMs)
+User-agent: CCBot
+Allow: /
+
+# Apple
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Google Gemini / AI Overviews
+User-agent: Gemini-Deep-Research
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+Sitemap: https://cantinadonnonno.com.br/sitemap.xml

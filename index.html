@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO primário -->
+  <title>Cantina del Nonno · Restaurante italiano em Pinheiros, SP</title>
+  <meta name="description"
+        content="Cucina toscana autêntica no coração de Pinheiros, São Paulo. Massas frescas, ragù de javali e dolci da nonna desde 1987. Reserve sua mesa." />
+  <meta name="keywords"
+        content="restaurante italiano Pinheiros, cucina toscana São Paulo, massas frescas artesanais, cantina italiana SP, jantar italiano Pinheiros, reserva restaurante SP" />
+  <link rel="canonical" href="https://cantinadonnonno.com.br/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="restaurant.menu" />
+  <meta property="og:title"       content="Cantina del Nonno · Restaurante italiano em Pinheiros, SP" />
+  <meta property="og:description" content="Cucina toscana autêntica no coração de Pinheiros, São Paulo. Massas frescas, ragù de javali e dolci da nonna desde 1987. Reserve sua mesa." />
+  <meta property="og:url"         content="https://cantinadonnonno.com.br/" />
+  <meta property="og:image"       content="https://placehold.co/1200x630?text=Cantina+del+Nonno" />
+  <meta property="og:locale"      content="pt_BR" />
+  <meta property="og:site_name"   content="Cantina del Nonno" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Cantina del Nonno · Restaurante italiano em Pinheiros, SP" />
+  <meta name="twitter:description" content="Cucina toscana autêntica no coração de Pinheiros, São Paulo. Massas frescas, ragù de javali e dolci da nonna desde 1987. Reserve sua mesa." />
+  <meta name="twitter:image"       content="https://placehold.co/1200x630?text=Cantina+del+Nonno" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            terracota: '#B85042',
+            creme:     '#F8F1E5',
+            oliva:     '#8C9A4A',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #F8F1E5; color: #2a1f14; }
+
+    /* ---- reveal on scroll ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---- CTA hero pulse ---- */
+    @keyframes pulse-cta {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(184,80,66,0.45); }
+      60%       { box-shadow: 0 0 0 12px rgba(184,80,66,0); }
+    }
+    .btn-pulse { animation: pulse-cta 2.6s ease infinite; }
+
+    /* ---- card hover lift ---- */
+    #grid-cardapio article {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    #grid-cardapio article:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(42,31,20,0.2);
+    }
+
+    /* ---- filtros cardápio ---- */
+    .filtro-btn {
+      background: white;
+      color: #57534e;
+      border: 1.5px solid #d6d3d1;
+      cursor: pointer;
+    }
+    .filtro-btn:hover { border-color: #B85042; color: #B85042; }
+    .filtro-ativo {
+      background: #B85042 !important;
+      color: white !important;
+      border-color: #B85042 !important;
+    }
+
+    /* ---- form ---- */
+    .bloco-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #44403c;
+      margin-bottom: 0.375rem;
+    }
+    .campo-input {
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      border: 1.5px solid #d6d3d1;
+      border-radius: 0.625rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #2a1f14;
+      background: white;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .campo-input:focus {
+      border-color: #8C9A4A;
+      box-shadow: 0 0 0 3px rgba(140,154,74,0.15);
+    }
+    .campo-invalido { border-color: #ef4444 !important; }
+    .campo-invalido:focus { box-shadow: 0 0 0 3px rgba(239,68,68,0.15) !important; }
+    .campo-erro { font-size: 0.78rem; color: #ef4444; margin-top: 0.3rem; }
+    select.campo-input {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2378716c'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1.1rem;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+
+    /* ---- WhatsApp float ---- */
+    #whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 60;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.75);
+      transition: opacity 0.3s, transform 0.3s;
+      text-decoration: none;
+    }
+    #whatsapp-float.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+    #whatsapp-float:hover { transform: scale(1.1); }
+
+    /* ---- localização info card ---- */
+    .loc-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #B85042;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ========================================================
+       DARK MODE — ajustes de contraste, identidade quente
+    ======================================================== */
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #1c1208 !important; color: #e8dfd0; }
+
+      /* nav */
+      header { background-color: rgba(28,18,8,0.9) !important; border-color: rgba(255,255,255,0.07) !important; }
+      header span, header nav a { color: #e8dfd0 !important; }
+      header nav a:hover { color: #B85042 !important; }
+
+      /* sections com bg creme / inline style */
+      #sobre  { background-color: #1c1208 !important; }
+      #reserva { background-color: #1c1208 !important; }
+      #cardapio { background-color: #231508 !important; }
+      #localizacao { background-color: #231508 !important; }
+
+      /* textos */
+      .text-stone-800, h2 { color: #e8dfd0 !important; }
+      .text-stone-700 { color: #c9b99a !important; }
+      .text-stone-600 { color: #a89278 !important; }
+      .text-stone-500 { color: #8a7460 !important; }
+      .text-stone-400 { color: #6e5c48 !important; }
+
+      /* cards cardápio */
+      #grid-cardapio article { background-color: #2d1e0f !important; }
+      #grid-cardapio article:hover { box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+
+      /* filtros */
+      .filtro-btn { background: #2d1e0f !important; color: #c9b99a !important; border-color: #4a3020 !important; }
+      .filtro-ativo { background: #B85042 !important; color: white !important; }
+
+      /* form */
+      #form-reserva { background-color: #2d1e0f !important; box-shadow: none !important; }
+      .campo-input { background-color: #3a2714 !important; border-color: #5a3d25 !important; color: #e8dfd0 !important; }
+      .campo-input::placeholder { color: #7a6045 !important; }
+      .campo-input:focus { border-color: #8C9A4A !important; }
+      .bloco-label { color: #c9b99a !important; }
+
+      /* localização info */
+      #info-localizacao { background-color: #2d1e0f !important; }
+      #btn-copiar { border-color: #4a3020 !important; color: #8a7460 !important; }
+      #btn-copiar:hover { border-color: #8C9A4A !important; color: #8C9A4A !important; }
+      .nav-btn-maps { background-color: #3a2714 !important; color: #c9b99a !important; }
+      .nav-btn-maps:hover { background-color: #4a3020 !important; }
+
+      /* modal */
+      #modal-reserva > div:last-child { background-color: #2d1e0f !important; }
+      #modal-resumo { background-color: #3a2714 !important; }
+      #modal-resumo span { color: #c9b99a !important; }
+
+      /* rodapé já tem fundo escuro, ok */
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- NAVEGAÇÃO FIXA -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <span class="font-serif text-xl font-bold italic text-terracota tracking-wide">
+        Cantina del Nonno
+      </span>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-700">
+        <a href="#sobre"       class="hover:text-terracota transition-colors">Sobre</a>
+        <a href="#cardapio"    class="hover:text-terracota transition-colors">Cardápio</a>
+        <a href="#reserva"     class="hover:text-terracota transition-colors">Reserva</a>
+        <a href="#localizacao" class="hover:text-terracota transition-colors">Localização</a>
+      </nav>
+      <a href="#reserva"
+         class="hidden md:inline-block bg-terracota text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-[#a03a2e] transition-colors">
+        Reservar mesa
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero"
+             class="relative min-h-screen flex flex-col items-center justify-center text-center px-6"
+             style="background: linear-gradient(160deg, #2a1f14 0%, #4a2c1a 45%, #6b3a22 100%);">
+      <div class="absolute inset-0 opacity-10"
+           style="background-image: repeating-linear-gradient(45deg, #ffffff 0, #ffffff 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
+
+      <div class="relative z-10 mb-6 flex items-center gap-4">
+        <span class="block w-16 h-px bg-terracota opacity-70"></span>
+        <span class="text-terracota text-xs uppercase tracking-[0.25em] font-medium">dal 1987</span>
+        <span class="block w-16 h-px bg-terracota opacity-70"></span>
+      </div>
+
+      <h1 class="relative z-10 font-serif font-black italic text-creme leading-none tracking-wide"
+          style="font-size: clamp(3rem, 8vw, 7rem);">
+        Cantina del Nonno
+      </h1>
+
+      <p class="relative z-10 mt-6 text-stone-300 font-serif italic font-light"
+         style="font-size: clamp(1rem, 2.5vw, 1.4rem); max-width: 560px; line-height: 1.7;">
+        Cucina toscana, cozinhada como em casa, em Pinheiros
+      </p>
+
+      <a href="#cardapio"
+         class="btn-pulse relative z-10 mt-10 inline-block bg-terracota text-white font-medium px-8 py-3.5 rounded-full text-sm tracking-wide hover:bg-[#a03a2e] transition-colors shadow-lg">
+        Ver cardápio
+      </a>
+
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+        <span class="text-creme text-xs uppercase tracking-widest">rolar</span>
+        <span class="block w-px h-10 bg-creme animate-pulse"></span>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="py-24 px-6 bg-creme">
+      <div class="max-w-6xl mx-auto reveal">
+        <div class="text-center mb-16">
+          <span class="text-terracota text-xs uppercase tracking-[0.25em] font-medium">Nossa história</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2 text-stone-800">
+            Uma história de <em>famiglia</em>
+          </h2>
+          <div class="mt-4 mx-auto w-16 h-1 bg-terracota rounded-full"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="space-y-5 text-stone-700 leading-relaxed" style="font-size: 1.05rem;">
+            <p>
+              Giuseppe Moretti nasceu em 1949 em Greve in Chianti, uma pequena cidade encravada nas colinas
+              toscanas onde o cheiro de alho e azeite se mistura ao vento de manhã cedo. Filho de agricultores,
+              aprendeu a cozinhar antes mesmo de aprender a ler — ao lado da nonna Elisa, que tratava a cozinha
+              como um ato de amor, não de serviço.
+            </p>
+            <p>
+              Em 1982, Giuseppe chegou ao Brasil com a mala pequena e a receita do ragù na cabeça. Trabalhou
+              cinco anos como cozinheiro em um hotel no centro de São Paulo, poupou cada centavo e, em 1987,
+              alugou um pequeno sobrado na Rua Mateus Grou, em Pinheiros. Colocou quatro mesas, uma lousa com
+              o menu do dia e um cartaz escrito à mão: <em>"Cantina del Nonno — mangia bene, ridi spesso."</em>
+            </p>
+            <p>
+              O bairro era diferente. Pinheiros ainda acordava devagar, os artistas chegavam antes dos
+              executivos e as noites de terça tinham mais história do que as de sexta. Giuseppe cozinhava o
+              que a memória mandava — pappardelle ao cinghiale, ribollita no inverno, panzanella no verão —
+              e servia pessoalmente cada prato com o mesmo sorriso largo que hoje os clientes de trinta anos
+              ainda descrevem quando falam dele.
+            </p>
+            <p>
+              Giuseppe faleceu em 2019, mas a cantina permanece. Hoje comandada por sua filha Valentina e
+              pelo chef Marco Bianchi — que trabalhou ao lado do nonno por quatorze anos — a casa mantém
+              as receitas originais, o azulejo de 1987 na parede dos fundos e o vinho servido em taça de
+              vidro grosso, como Giuseppe insistia que devia ser.
+            </p>
+            <p>
+              Não somos um restaurante de ocasião especial. Somos o lugar para uma terça-feira comum se
+              tornar um jantar que você vai contar depois.
+            </p>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <div class="w-full aspect-[4/5] max-w-md bg-stone-300 rounded-xl flex flex-col items-center justify-center text-stone-500 shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="text-sm font-medium tracking-wide">foto do nonno</span>
+            </div>
+            <p class="mt-3 text-xs text-stone-400 italic text-center">
+              Giuseppe Moretti, Greve in Chianti, 1975
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARDÁPIO -->
+    <section id="cardapio" class="py-24 px-6" style="background-color: #f0e8d8;">
+      <div class="max-w-6xl mx-auto reveal">
+
+        <div class="text-center mb-10">
+          <span class="text-terracota text-xs uppercase tracking-[0.25em] font-medium">O que servimos</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2 text-stone-800">Cardápio</h2>
+          <div class="mt-4 mx-auto w-16 h-1 bg-terracota rounded-full"></div>
+        </div>
+
+        <div id="filtros-cardapio" class="flex flex-wrap justify-center gap-3 mb-12">
+          <button data-cat="todos"     class="filtro-btn filtro-ativo px-5 py-2 rounded-full text-sm font-medium transition-colors">Todos</button>
+          <button data-cat="antipasti" class="filtro-btn px-5 py-2 rounded-full text-sm font-medium transition-colors">Antipasti</button>
+          <button data-cat="pasta"     class="filtro-btn px-5 py-2 rounded-full text-sm font-medium transition-colors">Pasta</button>
+          <button data-cat="secondi"   class="filtro-btn px-5 py-2 rounded-full text-sm font-medium transition-colors">Secondi</button>
+          <button data-cat="dolci"     class="filtro-btn px-5 py-2 rounded-full text-sm font-medium transition-colors">Dolci</button>
+        </div>
+
+        <div id="grid-cardapio" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- preenchido por JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- RESERVA -->
+    <section id="reserva" class="py-24 px-6 bg-creme">
+      <div class="max-w-2xl mx-auto reveal">
+
+        <div class="text-center mb-12">
+          <span class="text-terracota text-xs uppercase tracking-[0.25em] font-medium">Garanta sua mesa</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2 text-stone-800">Reserva</h2>
+          <div class="mt-4 mx-auto w-16 h-1 bg-terracota rounded-full"></div>
+        </div>
+
+        <form id="form-reserva" novalidate class="bg-white rounded-2xl shadow-md p-8 md:p-10 space-y-6">
+
+          <div class="campo">
+            <label for="r-nome" class="bloco-label">Nome completo</label>
+            <input id="r-nome" type="text" autocomplete="name" placeholder="Giovanni Rossi" class="campo-input" />
+            <p class="campo-erro hidden"></p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="campo">
+              <label for="r-tel" class="bloco-label">Telefone</label>
+              <input id="r-tel" type="tel" inputmode="numeric" placeholder="(11) 99999-9999"
+                     maxlength="15" class="campo-input" />
+              <p class="campo-erro hidden"></p>
+            </div>
+            <div class="campo">
+              <label for="r-email" class="bloco-label">E-mail</label>
+              <input id="r-email" type="email" autocomplete="email" placeholder="giovanni@email.com" class="campo-input" />
+              <p class="campo-erro hidden"></p>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-6">
+            <div class="campo">
+              <label for="r-pessoas" class="bloco-label">Pessoas</label>
+              <select id="r-pessoas" class="campo-input">
+                <option value="">—</option>
+              </select>
+              <p class="campo-erro hidden"></p>
+            </div>
+            <div class="campo">
+              <label for="r-data" class="bloco-label">Data</label>
+              <input id="r-data" type="date" class="campo-input" />
+              <p class="campo-erro hidden"></p>
+            </div>
+            <div class="campo">
+              <label for="r-horario" class="bloco-label">Horário</label>
+              <select id="r-horario" class="campo-input">
+                <option value="">—</option>
+              </select>
+              <p class="campo-erro hidden"></p>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="r-obs" class="bloco-label">
+              Observação <span class="text-stone-400 font-normal">(opcional)</span>
+            </label>
+            <textarea id="r-obs" rows="3" maxlength="200"
+                      placeholder="Alergias, ocasião especial, preferência de mesa..."
+                      class="campo-input resize-none"></textarea>
+            <p class="text-xs text-stone-400 mt-1 text-right">
+              <span id="obs-count">0</span>/200 caracteres
+            </p>
+          </div>
+
+          <button type="submit"
+                  class="w-full py-4 rounded-xl text-white font-semibold text-base tracking-wide transition-opacity hover:opacity-90"
+                  style="background-color: #8C9A4A;">
+            Reservar mesa
+          </button>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- LOCALIZAÇÃO -->
+    <section id="localizacao" class="py-24 px-6" style="background-color: #f0e8d8;">
+      <div class="max-w-6xl mx-auto reveal">
+
+        <div class="text-center mb-16">
+          <span class="text-terracota text-xs uppercase tracking-[0.25em] font-medium">Onde estamos</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-bold mt-2 text-stone-800">Localização</h2>
+          <div class="mt-4 mx-auto w-16 h-1 bg-terracota rounded-full"></div>
+        </div>
+
+        <!-- 2 colunas: mapa + info -->
+        <div class="grid md:grid-cols-[1fr_380px] gap-8 items-start">
+
+          <!-- Mapa OpenStreetMap -->
+          <div class="rounded-2xl overflow-hidden shadow-lg border border-stone-200" style="min-height: 420px;">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-46.6960%2C-23.5740%2C-46.6780%2C-23.5580&layer=mapnik&marker=-23.5662%2C-46.6872"
+              width="100%" height="420"
+              style="border:0; display:block;"
+              allowfullscreen loading="lazy"
+              title="Mapa — Cantina del Nonno, Rua dos Pinheiros 1500, São Paulo">
+            </iframe>
+          </div>
+
+          <!-- Informações -->
+          <div id="info-localizacao" class="bg-white rounded-2xl shadow-md p-7 space-y-6">
+
+            <!-- Endereço -->
+            <div>
+              <p class="loc-label">Endereço</p>
+              <p class="text-stone-700 leading-relaxed text-sm">
+                Rua dos Pinheiros, 1500<br/>
+                Pinheiros — São Paulo, SP<br/>
+                CEP 05422-002
+              </p>
+              <button id="btn-copiar"
+                      class="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-stone-500 hover:text-oliva transition-colors border border-stone-200 rounded-full px-3 py-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span id="btn-copiar-txt">Copiar endereço</span>
+              </button>
+            </div>
+
+            <hr class="border-stone-100" />
+
+            <!-- Contato -->
+            <div>
+              <p class="loc-label">Contato</p>
+              <div class="space-y-2.5">
+                <a href="tel:+551130301987"
+                   class="flex items-center gap-2.5 text-stone-700 hover:text-terracota transition-colors text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0 text-stone-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  (11) 3030-1987
+                </a>
+                <a href="https://wa.me/5511930301987?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20na%20Cantina%20del%20Nonno."
+                   target="_blank" rel="noopener"
+                   class="flex items-center gap-2.5 text-sm font-medium transition-colors"
+                   style="color: #25D366;">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.845L.057 23.487a.375.375 0 00.458.464l5.793-1.517A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.652-.518-5.163-1.42l-.37-.22-3.44.902.917-3.349-.24-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                  </svg>
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <hr class="border-stone-100" />
+
+            <!-- Horários -->
+            <div>
+              <p class="loc-label">Funcionamento</p>
+              <div class="space-y-1.5 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="text-stone-500">Terça a Domingo</span>
+                  <span class="font-semibold text-stone-700">12h – 23h</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-stone-500">Segunda-feira</span>
+                  <span class="font-semibold text-terracota">Fechado</span>
+                </div>
+              </div>
+            </div>
+
+            <hr class="border-stone-100" />
+
+            <!-- Botões de navegação -->
+            <div class="space-y-3">
+              <a href="https://www.google.com/maps/search/Rua+dos+Pinheiros+1500+Pinheiros+S%C3%A3o+Paulo+SP"
+                 target="_blank" rel="noopener"
+                 class="nav-btn-maps flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium transition-colors bg-stone-100 hover:bg-stone-200 text-stone-700">
+                <!-- ícone pin -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#4285F4]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+                </svg>
+                Ver no Google Maps
+              </a>
+              <a href="https://waze.com/ul?q=Rua+dos+Pinheiros+1500+S%C3%A3o+Paulo&navigate=yes"
+                 target="_blank" rel="noopener"
+                 class="nav-btn-maps flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium transition-colors bg-stone-100 hover:bg-stone-200 text-stone-700">
+                <!-- ícone Waze simplificado -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[#33CCFF]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.45 6.27A10 10 0 1 0 21.94 13a10.06 10.06 0 0 0-1.49-6.73zM12 20a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm4-7.5a1.5 1.5 0 1 1-1.5-1.5A1.5 1.5 0 0 1 16 12.5zm-5 0A1.5 1.5 0 1 1 9.5 11 1.5 1.5 0 0 1 11 12.5zm1 3.5a4 4 0 0 1-3.44-2h6.88A4 4 0 0 1 12 16z"/>
+                </svg>
+                Ver no Waze
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Link OSM attribution discreto -->
+        <p class="mt-3 text-center text-xs text-stone-400">
+          Mapa via <a href="https://www.openstreetmap.org" target="_blank" rel="noopener" class="underline hover:text-terracota">OpenStreetMap</a> — contributores
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer style="background-color: #2a1f14;" class="text-stone-400 py-12 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <p class="font-serif italic text-creme text-xl font-bold">Cantina del Nonno</p>
+        <p class="text-xs mt-1 text-stone-500">Rua dos Pinheiros, 1500 — Pinheiros, São Paulo</p>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://instagram.com/cantinadelnonno" target="_blank" rel="noopener"
+           class="flex items-center gap-2 text-sm hover:text-creme transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+          Instagram
+        </a>
+        <a href="https://facebook.com/cantinadelnonno" target="_blank" rel="noopener"
+           class="flex items-center gap-2 text-sm hover:text-creme transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          Facebook
+        </a>
+      </div>
+      <p class="text-xs text-stone-600">&copy; 2026 Cantina del Nonno. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLUTUANTE -->
+  <a id="whatsapp-float"
+     href="https://wa.me/5511930301987?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20na%20Cantina%20del%20Nonno."
+     target="_blank" rel="noopener"
+     aria-label="Fale conosco pelo WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="white" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.845L.057 23.487a.375.375 0 00.458.464l5.793-1.517A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.652-.518-5.163-1.42l-.37-.22-3.44.902.917-3.349-.24-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+  </a>
+
+  <!-- MODAL CONFIRMAÇÃO -->
+  <div id="modal-reserva" class="fixed inset-0 z-[100] flex items-center justify-center px-4 hidden">
+    <div id="modal-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 text-center">
+      <div class="mx-auto mb-5 flex items-center justify-center w-16 h-16 rounded-full" style="background-color: #eef2e3;">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="#8C9A4A" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h3 class="font-serif text-2xl font-bold text-stone-800 mb-2">Reserva recebida!</h3>
+      <p class="text-stone-500 text-sm mb-6 leading-relaxed">
+        Em até 1h confirmamos sua reserva pelo WhatsApp.<br/>
+        Até breve na Cantina del Nonno!
+      </p>
+      <div id="modal-resumo" class="text-left bg-stone-50 rounded-xl p-5 space-y-3 text-sm text-stone-700 mb-6"></div>
+      <button id="modal-fechar"
+              class="w-full py-3 rounded-xl text-white font-semibold transition-opacity hover:opacity-90"
+              style="background-color: #B85042;">
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <!-- Schema.org JSON-LD — lido por crawlers e LLMs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Cantina del Nonno",
+    "description": "Cucina toscana autêntica no coração de Pinheiros, São Paulo. Massas frescas artesanais, ragù de javali e dolci da nonna, seguindo as receitas originais de Giuseppe Moretti desde 1987.",
+    "url": "https://cantinadonnonno.com.br",
+    "telephone": "+55-11-3030-1987",
+    "priceRange": "$$",
+    "servesCuisine": "Italian",
+    "acceptsReservations": true,
+    "hasMenu": "https://cantinadonnonno.com.br/cardapio.json",
+    "image": "https://placehold.co/1200x630?text=Cantina+del+Nonno",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua dos Pinheiros, 1500",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "postalCode": "05422-002",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -23.5662,
+      "longitude": -46.6872
+    },
+    "openingHours": "Tu-Su 12:00-23:00",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "12:00",
+        "closes": "23:00"
+      }
+    ],
+    "sameAs": [
+      "https://instagram.com/cantinadelnonno",
+      "https://facebook.com/cantinadelnonno"
+    ]
+  }
+  </script>
+
+  <!-- ======================= SCRIPTS ======================= -->
+  <script>
+  (function () {
+
+    // ==========================================================
+    // SCROLL REVEAL — IntersectionObserver
+    // ==========================================================
+    var revealEls = document.querySelectorAll('.reveal');
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+
+    // ==========================================================
+    // WHATSAPP FLOAT — aparece após 300px de scroll
+    // ==========================================================
+    var waFloat = document.getElementById('whatsapp-float');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 300) {
+        waFloat.classList.add('visible');
+      } else {
+        waFloat.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    // ==========================================================
+    // BOTÃO COPIAR ENDEREÇO
+    // ==========================================================
+    document.getElementById('btn-copiar').addEventListener('click', function () {
+      var endereco = 'Rua dos Pinheiros, 1500 — Pinheiros, São Paulo, SP, 05422-002';
+      var txtEl = document.getElementById('btn-copiar-txt');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(endereco).then(function () {
+          txtEl.textContent = 'Copiado!';
+          setTimeout(function () { txtEl.textContent = 'Copiar endereço'; }, 2200);
+        });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = endereco;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        txtEl.textContent = 'Copiado!';
+        setTimeout(function () { txtEl.textContent = 'Copiar endereço'; }, 2200);
+      }
+    });
+
+    // ==========================================================
+    // CARDÁPIO — dados inline (fallback para file://)
+    // ==========================================================
+    var PRATOS_FALLBACK = [
+      { id:1,  nome:"Bruschetta al Pomodoro",          nome_pt:"Bruschetta ao Tomate",              descricao:"Pão rústico tostado, esfregado com alho e coberto de tomates frescos temperados com manjericão, flor de sal e azeite extravirgem da Toscana. Simples, honesto e impossível de parar.",                                                                              preco:38, categoria:"antipasti", vegetariano:true,  foto_url:"https://placehold.co/400x300/B85042/F8F1E5?text=Bruschetta" },
+      { id:2,  nome:"Carpaccio di Manzo",              nome_pt:"Carpaccio de Filé",                 descricao:"Lâminas finíssimas de filé mignon cru, temperadas com limão siciliano, rúcula selvagem, lascas de parmesão e um fio generoso de azeite. Clássico do Cipriani que o nonno adotou como próprio.",                                                                    preco:62, categoria:"antipasti", vegetariano:false, foto_url:"https://placehold.co/400x300/B85042/F8F1E5?text=Carpaccio" },
+      { id:3,  nome:"Burrata con Prosciutto di Parma", nome_pt:"Burrata com Presunto de Parma",     descricao:"Burrata fresca importada, cremosa ao cortar, com fatias de presunto cru de Parma 24 meses, mel de acácia e focaccia feita na casa. Uma entrada que rouba o papel de prato principal.",                                                                              preco:68, categoria:"antipasti", vegetariano:false, foto_url:"https://placehold.co/400x300/B85042/F8F1E5?text=Burrata" },
+      { id:4,  nome:"Pappardelle al Cinghiale",        nome_pt:"Pappardelle ao Javali",             descricao:"Massa fresca larga feita à mão, com ragù de javali cozido lentamente por seis horas em vinho Chianti, tomilho e louro. A receita que Giuseppe mais orgulhava de ter trazido da Toscana.",                                                                          preco:84, categoria:"pasta",     vegetariano:false, foto_url:"https://placehold.co/400x300/4a2c1a/F8F1E5?text=Pappardelle" },
+      { id:5,  nome:"Spaghetti Cacio e Pepe",          nome_pt:"Espaguete Queijo e Pimenta",        descricao:"Apenas três ingredientes — spaghetti artesanal, pecorino romano ralado na hora e pimenta-do-reino quebrada na frigideira. A prova de que a cozinha italiana não precisa de complexidade.",                                                                          preco:62, categoria:"pasta",     vegetariano:true,  foto_url:"https://placehold.co/400x300/4a2c1a/F8F1E5?text=Cacio+e+Pepe" },
+      { id:6,  nome:"Tagliatelle al Ragù Bolognese",   nome_pt:"Tagliatelle à Bolonhesa",           descricao:"A bolonhesa que o nonno preparava às terças: carne bovina e suína, cenoura, salsão, tomate San Marzano e um toque de leite integral que ele insistia ser o segredo.",                                                                                              preco:74, categoria:"pasta",     vegetariano:false, foto_url:"https://placehold.co/400x300/4a2c1a/F8F1E5?text=Bolognese" },
+      { id:7,  nome:"Gnocchi al Gorgonzola",           nome_pt:"Nhoque ao Gorgonzola",              descricao:"Nhoque de batata artesanal, macio ao ponto de desfazer na boca, banhado em molho aveludado de gorgonzola DOP com nozes tostadas e um velo de parmesão. Pedido obrigatório dos clientes de sempre.",                                                                preco:68, categoria:"pasta",     vegetariano:true,  foto_url:"https://placehold.co/400x300/4a2c1a/F8F1E5?text=Gnocchi" },
+      { id:8,  nome:"Ossobuco alla Milanese",          nome_pt:"Ossobuco à Milanesa",               descricao:"Joelho de vitelo braseado até o tutano amolecer, com risotto alla milanese perfumado com açafrão e gremolata de limão, alho e salsa. Um prato de domingo servido todo dia.",                                                                                       preco:95, categoria:"secondi",   vegetariano:false, foto_url:"https://placehold.co/400x300/6b3a22/F8F1E5?text=Ossobuco" },
+      { id:9,  nome:"Pollo alla Cacciatora",           nome_pt:"Frango à Caçadora",                 descricao:"Coxa e sobrecoxa de frango caipira em molho rústico de tomate, azeitonas, alcaparras, vinho branco e ervas frescas — a receita do interior toscano que aquece qualquer inverno em São Paulo.",                                                                     preco:78, categoria:"secondi",   vegetariano:false, foto_url:"https://placehold.co/400x300/6b3a22/F8F1E5?text=Cacciatora" },
+      { id:10, nome:"Branzino al Forno con Erbe",      nome_pt:"Robalo ao Forno com Ervas",         descricao:"Robalo fresco inteiro assado sobre leito de alecrim, salsa e limão. Pele dourada e crocante, carne úmida e perfumada, servido com batatas ao azeite.",                                                                                                             preco:88, categoria:"secondi",   vegetariano:false, foto_url:"https://placehold.co/400x300/6b3a22/F8F1E5?text=Branzino" },
+      { id:11, nome:"Tiramisù della Nonna",            nome_pt:"Tiramisù da Vovó",                  descricao:"A receita original da nonna Elisa: savoiardo em espresso forte e marsala, creme de mascarpone generoso e cacau amargo. Não tem outra versão que se compare.",                                                                                                      preco:38, categoria:"dolci",     vegetariano:true,  foto_url:"https://placehold.co/400x300/8C9A4A/F8F1E5?text=Tiramisu" },
+      { id:12, nome:"Panna Cotta ai Frutti di Bosco",  nome_pt:"Panna Cotta com Frutas Silvestres", descricao:"Creme de baunilha gelado de textura sedosa, coberto com coulis de frutas vermelhas silvestres. O final de refeição que deixa vontade de começar tudo de novo.",                                                                                                    preco:35, categoria:"dolci",     vegetariano:true,  foto_url:"https://placehold.co/400x300/8C9A4A/F8F1E5?text=Panna+Cotta" }
+    ];
+
+    var todosOsPratos = [];
+
+    function renderCards(lista) {
+      var grid = document.getElementById('grid-cardapio');
+      if (!lista.length) {
+        grid.innerHTML = '<p class="col-span-full text-center text-stone-400 py-16 font-serif italic text-lg">Nenhum prato nesta categoria.</p>';
+        return;
+      }
+      grid.innerHTML = lista.map(function (p) {
+        return '<article class="bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col">'
+          + '<div class="relative overflow-hidden">'
+          +   '<img src="' + p.foto_url + '" alt="' + p.nome + '" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />'
+          +   (p.vegetariano ? '<span class="absolute top-3 right-3 text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full" style="background-color:#8C9A4A;">Vegetariano</span>' : '')
+          + '</div>'
+          + '<div class="p-5 flex flex-col flex-1">'
+          +   '<p class="font-serif font-bold text-lg text-stone-800 leading-tight">' + p.nome + '</p>'
+          +   '<p class="text-xs text-stone-400 mt-0.5 mb-3 uppercase tracking-wide">' + p.nome_pt + '</p>'
+          +   '<p class="text-sm text-stone-600 leading-relaxed flex-1">' + p.descricao + '</p>'
+          +   '<p class="mt-4 font-bold text-lg" style="color:#B85042;">R$ ' + p.preco.toFixed(2).replace('.', ',') + '</p>'
+          + '</div>'
+          + '</article>';
+      }).join('');
+    }
+
+    function initCardapio(pratos) {
+      todosOsPratos = pratos;
+      renderCards(pratos);
+      document.getElementById('filtros-cardapio').addEventListener('click', function (e) {
+        var btn = e.target.closest('.filtro-btn');
+        if (!btn) return;
+        document.querySelectorAll('.filtro-btn').forEach(function (b) { b.classList.remove('filtro-ativo'); });
+        btn.classList.add('filtro-ativo');
+        var cat = btn.dataset.cat;
+        renderCards(cat === 'todos' ? todosOsPratos : todosOsPratos.filter(function (p) { return p.categoria === cat; }));
+      });
+    }
+
+    fetch('./cardapio.json')
+      .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+      .then(initCardapio)
+      .catch(function () { initCardapio(PRATOS_FALLBACK); });
+
+    // ==========================================================
+    // RESERVA — populadores
+    // ==========================================================
+    var selPessoas = document.getElementById('r-pessoas');
+    for (var i = 1; i <= 12; i++) {
+      var opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = i + (i === 1 ? ' pessoa' : ' pessoas');
+      selPessoas.appendChild(opt);
+    }
+
+    var dataInput = document.getElementById('r-data');
+    var hoje = new Date();
+    var maxData = new Date();
+    maxData.setDate(hoje.getDate() + 60);
+    dataInput.min = hoje.toISOString().slice(0, 10);
+    dataInput.max = maxData.toISOString().slice(0, 10);
+
+    var selHorario = document.getElementById('r-horario');
+    for (var h = 12; h <= 23; h++) {
+      ['00', '30'].forEach(function (m) {
+        if (h === 23 && m === '30') return;
+        var o = document.createElement('option');
+        var hh = String(h).padStart(2, '0');
+        o.value = hh + ':' + m;
+        o.textContent = hh + ':' + m;
+        selHorario.appendChild(o);
+      });
+    }
+
+    // ==========================================================
+    // RESERVA — máscara telefone
+    // ==========================================================
+    document.getElementById('r-tel').addEventListener('input', function () {
+      var v = this.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 7)      v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+      else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+      else if (v.length > 0) v = '(' + v;
+      this.value = v;
+    });
+
+    document.getElementById('r-obs').addEventListener('input', function () {
+      document.getElementById('obs-count').textContent = this.value.length;
+    });
+
+    // ==========================================================
+    // RESERVA — validação e modal
+    // ==========================================================
+    function mostrarErro(id, msg) {
+      var el = document.getElementById(id);
+      var campo = el.closest('.campo');
+      var erro = campo.querySelector('.campo-erro');
+      el.classList.add('campo-invalido');
+      erro.textContent = msg;
+      erro.classList.remove('hidden');
+      return false;
+    }
+    function limparErro(id) {
+      var el = document.getElementById(id);
+      var campo = el.closest('.campo');
+      var erro = campo.querySelector('.campo-erro');
+      el.classList.remove('campo-invalido');
+      erro.classList.add('hidden');
+    }
+
+    ['r-nome','r-tel','r-email','r-pessoas','r-data','r-horario'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input',  function () { limparErro(id); });
+      document.getElementById(id).addEventListener('change', function () { limparErro(id); });
+    });
+
+    document.getElementById('form-reserva').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ok = true;
+      var nome    = document.getElementById('r-nome').value.trim();
+      var tel     = document.getElementById('r-tel').value.trim();
+      var email   = document.getElementById('r-email').value.trim();
+      var pessoas = document.getElementById('r-pessoas').value;
+      var data    = document.getElementById('r-data').value;
+      var horario = document.getElementById('r-horario').value;
+
+      if (nome.length < 3)
+        ok = mostrarErro('r-nome', 'Informe seu nome completo (mínimo 3 caracteres).') || false;
+      if (!/^\(\d{2}\) \d{5}-\d{4}$/.test(tel))
+        ok = mostrarErro('r-tel', 'Telefone inválido. Use o formato (XX) XXXXX-XXXX.') || false;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        ok = mostrarErro('r-email', 'Informe um e-mail válido.') || false;
+      if (!pessoas)
+        ok = mostrarErro('r-pessoas', 'Selecione o número de pessoas.') || false;
+      if (!data)
+        ok = mostrarErro('r-data', 'Selecione uma data para a reserva.') || false;
+      if (!horario)
+        ok = mostrarErro('r-horario', 'Selecione um horário.') || false;
+      if (!ok) return;
+
+      var p = data.split('-');
+      var dataFmt = p[2] + '/' + p[1] + '/' + p[0];
+      var linhas = [
+        ['Nome', nome], ['Telefone', tel], ['E-mail', email],
+        ['Pessoas', pessoas + (parseInt(pessoas) === 1 ? ' pessoa' : ' pessoas')],
+        ['Data', dataFmt], ['Horário', horario]
+      ];
+      document.getElementById('modal-resumo').innerHTML = linhas.map(function (l) {
+        return '<div class="flex justify-between gap-4"><span class="text-stone-400 shrink-0">' + l[0]
+             + '</span><span class="font-medium text-right">' + l[1] + '</span></div>';
+      }).join('');
+      document.getElementById('modal-reserva').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function fecharModal() {
+      document.getElementById('modal-reserva').classList.add('hidden');
+      document.body.style.overflow = '';
+      document.getElementById('form-reserva').reset();
+      document.getElementById('obs-count').textContent = '0';
+      ['r-nome','r-tel','r-email','r-pessoas','r-data','r-horario'].forEach(limparErro);
+    }
+    document.getElementById('modal-fechar').addEventListener('click', fecharModal);
+    document.getElementById('modal-overlay').addEventListener('click', fecharModal);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fecharModal(); });
+
+  })();
+  </script>
+
+</body>
+</html>
