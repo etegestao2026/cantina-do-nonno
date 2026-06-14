@@ -1,5 +1,5 @@
 # robots.txt — Cantina del Nonno
-# https://cantinadonnonno.com.br
+# https://etegestao2026.github.io/cantina-do-nonno
 
 # Crawlers tradicionais de busca
 User-agent: *
@@ -59,4 +59,4 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
-Sitemap: https://cantinadonnonno.com.br/sitemap.xml
+Sitemap: https://etegestao2026.github.io/cantina-do-nonno/sitemap.xml
